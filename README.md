@@ -1,104 +1,80 @@
 <div align="center">
 
-# ⚡ LeetCode Solutions & Competitive Programming Hub
+# ⚡ LeetCode Solutions
 
-Curated, tested, and systematically documented programming solutions with asymptotic complexity analysis and live discovery portal.
+Repositório pessoal de estudos com resoluções de problemas do LeetCode, códigos testados, explicações de abordagem e análise de complexidade de tempo e espaço.
 
 [![Problems Solved](https://img.shields.io/badge/Solved-49%20Problems-blue?style=for-the-badge&logo=leetcode)](https://github.com/777SevenSeven/Leetcode-Solutions)
 [![Easy](https://img.shields.io/badge/Easy-32-brightgreen?style=for-the-badge)](https://github.com/777SevenSeven/Leetcode-Solutions)
 [![Medium](https://img.shields.io/badge/Medium-16-yellow?style=for-the-badge)](https://github.com/777SevenSeven/Leetcode-Solutions)
 [![Hard](https://img.shields.io/badge/Hard-1-red?style=for-the-badge)](https://github.com/777SevenSeven/Leetcode-Solutions)
 [![SQL 50](https://img.shields.io/badge/SQL_50-100%25_Complete-success?style=for-the-badge)](./LeetCode/SQL/)
-[![Web Portal](https://img.shields.io/badge/Live_Portal-GitHub_Pages-0ea5e9?style=for-the-badge&logo=googlechrome)](https://777sevenseven.github.io/Leetcode-Solutions/)
-
-[🌐 Acessar Portal Web & Busca Interativa](https://777sevenseven.github.io/Leetcode-Solutions/) &bull; [📂 Catálogo LeetCode](./LeetCode/) &bull; [📑 Diretrizes de Contribuição](./CONTRIBUTING.md)
 
 </div>
 
 ---
 
-## 📌 Visão Geral & Discovery Engineering
+## 📌 Sobre o Repositório
 
-Este repositório consolida soluções de desafios técnicos de programação (LeetCode, HackerRank, Codeforces) estruturadas sob uma arquitetura de engenharia de software auditável, modular e com foco em **descoberta e indexação técnica**:
+Este repositório serve como registro do meu estudo em algoritmos, modelagem relacional e bancos de dados através dos desafios do **LeetCode**.
 
-- **Interface de Descoberta Web (GitHub Pages)**: Portal estático independente com pesquisa em tempo real por padrões relacionais, dificuldade e identificadores.
-- **Indexação Técnica & SEO**: Cada problema possui sua própria página estática indexável (`docs/solutions/`), equipada com metadados estruturados Schema.org / JSON-LD, sitemap XML e permissões explícitas para crawlers de busca e agentes de IA (`OAI-SearchBot`, Googlebot, Bingbot).
-- **Padronização e Rastreabilidade**: Convenção de 4 dígitos (`0000-slug`), separação dos códigos-fonte e fichas técnicas individuais com análise assintótica de tempo e espaço ($O$).
-- **Catálogo Estruturado em Metadados**: Base única em [`metadata/solutions.json`](./metadata/solutions.json) utilizada para alimentar documentação, scripts e a interface web.
+Cada solução está organizada por nível de dificuldade e contém:
+- Código-fonte limpo com submissão aceita (**Accepted**).
+- Ficha técnica individual (`README.md`) com enunciado resumido e link para o problema original.
+- Explicação da abordagem adotada.
+- Análise de complexidade assintótica de tempo e espaço ($O$).
 
 ---
 
-## 🏗️ Estrutura do Repositório
+## 🏗️ Estrutura de Diretórios
 
 ```text
-Leetcode-Solutions/
-├── docs/                           # Portal Web estático (GitHub Pages)
-│   ├── index.html                  # Interface de exploração e busca por filtros
-│   ├── solutions/                  # Páginas estáticas individuais de cada exercício
-│   ├── sitemap.xml                 # Mapeamento para motores de busca
-│   └── robots.txt                  # Diretrizes para indexadores e agentes de IA
-├── metadata/
-│   └── solutions.json              # Catálogo centralizado em formato JSON
-├── scripts/
-│   ├── generate_site.py            # Compilador do portal web estático
-│   ├── generate_readme.py          # Gerador automático dos índices e métricas
-│   ├── validate.py                 # Validador de integridade, nomenclatura e links
-│   └── sync.py                     # Sincronizador e ingestor de novas submissões
-├── LeetCode/
-│   ├── README.md                   # Portal específico da plataforma LeetCode
-│   ├── SQL/                        # Acervo SQL segregado por dificuldade
-│   │   ├── Easy/                   # 32 soluções catalogadas
-│   │   ├── Medium/                 # 16 soluções catalogadas
-│   │   └── Hard/                   # 1 solução catalogada
-│   ├── Python/                     # Diretório preparado para algoritmos e estruturas de dados
-│   └── Java/                       # Diretório preparado para soluções em Java
-├── HackerRank/                     # Suporte multi-plataforma (Python & SQL)
-├── Codeforces/                     # Suporte multi-plataforma (C++)
-├── CONTRIBUTING.md                 # Guia de padronização e fluxo de contribuição
-├── LICENSE                         # Licença MIT
-└── README.md                       # Índice principal e dashboard
+LeetCode/
+├── SQL/
+│   ├── Easy/                       # Soluções de nível fácil
+│   ├── Medium/                     # Soluções de nível médio
+│   └── Hard/                       # Soluções de nível difícil
+├── Python/                         # Soluções em Python 3
+└── Java/                           # Soluções em Java
 ```
 
 ---
 
 ## 🎯 Progresso: LeetCode SQL 50 Study Plan
 
-O plano de estudos **LeetCode SQL 50** está **concluído**, cobrindo todas as competências fundamentais de engenharia de dados e modelagem relacional:
+O plano de estudos **LeetCode SQL 50** foi concluído, cobrindo tópicos fundamentais de consultas relacionais:
 
-| Categoria SQL | Soluções Concluídas | Progresso Visual | Status |
+| Categoria | Concluídos | Progresso | Status |
 | :--- | :---: | :---: | :---: |
-| **Select** | `5/5` | `██████████` 100% | ✅ Completed |
-| **Basic Joins** | `9/9` | `██████████` 100% | ✅ Completed |
-| **Basic Aggregate Functions** | `8/8` | `██████████` 100% | ✅ Completed |
-| **Sorting and Grouping** | `6/6` | `██████████` 100% | ✅ Completed |
-| **Advanced Select and Joins** | `7/7` | `██████████` 100% | ✅ Completed |
-| **Subqueries** | `7/7` | `██████████` 100% | ✅ Completed |
-| **Advanced String Functions / Regex / Clause** | `7/7` | `██████████` 100% | ✅ Completed |
+| **Select** | `5/5` | `██████████` 100% | ✅ Concluído |
+| **Basic Joins** | `9/9` | `██████████` 100% | ✅ Concluído |
+| **Basic Aggregate Functions** | `8/8` | `██████████` 100% | ✅ Concluído |
+| **Sorting and Grouping** | `6/6` | `██████████` 100% | ✅ Concluído |
+| **Advanced Select and Joins** | `7/7` | `██████████` 100% | ✅ Concluído |
+| **Subqueries** | `7/7` | `██████████` 100% | ✅ Concluído |
+| **Advanced String Functions / Regex / Clause** | `7/7` | `██████████` 100% | ✅ Concluído |
 
 ---
 
-## 📊 Métricas Consolidadas
+## 📊 Métricas
 
 <div align="center">
 
-| Métrica | Valor | Percentual |
+| Métrica | Quantidade | Percentual |
 | :--- | :---: | :---: |
-| **Total de Desafios Resolvidos** | **`49`** | `100%` |
+| **Total de Problemas Resolvidos** | **`49`** | `100%` |
 | 🟢 **Dificuldade Fácil (Easy)** | `32` | `65.3%` |
 | 🟡 **Dificuldade Média (Medium)** | `16` | `32.7%` |
 | 🔴 **Dificuldade Difícil (Hard)** | `1` | `2.0%` |
-| 🗄️ **Dialeto Relacional** | `MySQL 8.0` | `100%` |
-| 🌐 **Páginas Estáticas Indexáveis** | `49` | `100%` |
+| 🗄️ **Linguagem Principal** | `MySQL 8.0` | `100%` |
 
 </div>
 
 ---
 
-## 📑 Catálogo de Soluções
+## 📑 Soluções Catalogadas
 
-A tabela abaixo reflete as soluções catalogadas em [`metadata/solutions.json`](./metadata/solutions.json). Cada solução possui seu próprio arquivo `.sql` e uma ficha técnica individual `README.md` com abordagem e análise assintótica.
-
-| ID | Desafio | Dificuldade | Categoria | Tempo | Espaço | Código | Documentação |
+| ID | Desafio | Dificuldade | Categoria | Tempo | Espaço | Código | Explicação |
 | :-: | :--- | :-: | :--- | :-: | :-: | :-: | :-: |
 | `0176` | [Second Highest Salary](https://leetcode.com/problems/second-highest-salary) | `🟡 Medium` | Advanced String Functions / Regex / Clause | `O(N log N)` | `O(1)` | [`second-highest-salary.sql`](LeetCode/SQL/Medium/0176-second-highest-salary/0176-second-highest-salary.sql) | [`Docs`](LeetCode/SQL/Medium/0176-second-highest-salary/README.md) |
 | `0180` | [Consecutive Numbers](https://leetcode.com/problems/consecutive-numbers) | `🟡 Medium` | Advanced Select and Joins | `O(N)` | `O(N)` | [`consecutive-numbers.sql`](LeetCode/SQL/Medium/0180-consecutive-numbers/0180-consecutive-numbers.sql) | [`Docs`](LeetCode/SQL/Medium/0180-consecutive-numbers/README.md) |
@@ -152,31 +128,10 @@ A tabela abaixo reflete as soluções catalogadas em [`metadata/solutions.json`]
 
 ---
 
-## ⚙️ Manutenção e Scripts Utilitários
+## 🧪 Como Executar Localmente
 
-O repositório conta com scripts em Python para manutenção contínua:
+As soluções utilizam **MySQL 8.0+** e dialeto padrão ANSI SQL. Para testar localmente via Docker:
 
-```bash
-# Validar conformidade estrutural, links e metadados
-python scripts/validate.py
-
-# Regenerar documentação Markdown do README
-python scripts/generate_readme.py
-
-# Recompilar portal estático (HTML, sitemap e robots)
-python scripts/generate_site.py
-
-# Ingerir novas submissões
-python scripts/sync.py
-```
-
----
-
-## 🧪 Como Executar as Consultas Localmente
-
-Todas as soluções utilizam **MySQL 8.0+** e são compatíveis com padrões ANSI SQL.
-
-### Exemplo com Docker:
 ```bash
 # Iniciar instância do MySQL
 docker run --name leetcode-mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=leetcode -p 3306:3306 -d mysql:8.0
@@ -187,21 +142,6 @@ docker exec -i leetcode-mysql mysql -uroot -psecret leetcode < LeetCode/SQL/Easy
 
 ---
 
-## 🏷️ GitHub Topics & Descoberta
-
-Topics configurados para o repositório:
-```text
-leetcode, leetcode-solutions, sql, mysql, database, algorithms, data-structures, competitive-programming, interview-preparation, problem-solving, coding-challenges, sql50
-```
-
----
-
-## 🤝 Diretrizes de Contribuição
-
-Consulte [`CONTRIBUTING.md`](./CONTRIBUTING.md) para regras de nomenclatura, formatação de soluções e checklist para envio de pull requests.
-
----
-
 ## 📜 Licença
 
-Distribuído sob a licença **MIT**. Veja [`LICENSE`](./LICENSE) para mais informações.
+Distribuído sob a licença **MIT**. Veja [`LICENSE`](./LICENSE) para mais detalhes.
