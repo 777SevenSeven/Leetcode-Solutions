@@ -2,28 +2,29 @@
 
 # ⚡ LeetCode Solutions & Competitive Programming Hub
 
-Curated, tested, and systematically documented programming solutions adhering to engineering benchmark quality standards.
+Curated, tested, and systematically documented programming solutions with asymptotic complexity analysis and live discovery portal.
 
-[![Problems Solved](https://img.shields.io/badge/Solved-49%20Problems-blue?style=for-the-badge&logo=leetcode)](C:\Users\André Antonio\Downloads\Leetcode-Solutions\README.md)
-[![Easy](https://img.shields.io/badge/Easy-32-brightgreen?style=for-the-badge)](C:\Users\André Antonio\Downloads\Leetcode-Solutions\README.md)
-[![Medium](https://img.shields.io/badge/Medium-16-yellow?style=for-the-badge)](C:\Users\André Antonio\Downloads\Leetcode-Solutions\README.md)
-[![Hard](https://img.shields.io/badge/Hard-1-red?style=for-the-badge)](C:\Users\André Antonio\Downloads\Leetcode-Solutions\README.md)
-[![License](https://img.shields.io/badge/License-MIT-purple?style=for-the-badge)](./LICENSE)
+[![Problems Solved](https://img.shields.io/badge/Solved-49%20Problems-blue?style=for-the-badge&logo=leetcode)](https://github.com/777SevenSeven/Leetcode-Solutions)
+[![Easy](https://img.shields.io/badge/Easy-32-brightgreen?style=for-the-badge)](https://github.com/777SevenSeven/Leetcode-Solutions)
+[![Medium](https://img.shields.io/badge/Medium-16-yellow?style=for-the-badge)](https://github.com/777SevenSeven/Leetcode-Solutions)
+[![Hard](https://img.shields.io/badge/Hard-1-red?style=for-the-badge)](https://github.com/777SevenSeven/Leetcode-Solutions)
 [![SQL 50](https://img.shields.io/badge/SQL_50-100%25_Complete-success?style=for-the-badge)](./LeetCode/SQL/)
+[![Web Portal](https://img.shields.io/badge/Live_Portal-GitHub_Pages-0ea5e9?style=for-the-badge&logo=googlechrome)](https://777sevenseven.github.io/Leetcode-Solutions/)
+
+[🌐 Acessar Portal Web & Busca Interativa](https://777sevenseven.github.io/Leetcode-Solutions/) &bull; [📂 Catálogo LeetCode](./LeetCode/) &bull; [📑 Diretrizes de Contribuição](./CONTRIBUTING.md)
 
 </div>
 
 ---
 
-## 📌 Visão Geral & Arquitetura de Qualidade
+## 📌 Visão Geral & Discovery Engineering
 
-Este repositório consolida soluções de desafios técnicos de programação (LeetCode, HackerRank, Codeforces) estruturadas sobre uma **arquitetura de engenharia de software auditável, reproduzível e orientada a dados**.
+Este repositório consolida soluções de desafios técnicos de programação (LeetCode, HackerRank, Codeforces) estruturadas sob uma arquitetura de engenharia de software auditável, modular e com foco em **descoberta e indexação técnica**:
 
-O projeto incorpora os padrões de referência dos maiores acervos de programação do GitHub:
-- **`doocs/leetcode`**: Escalabilidade modular e documentação técnica padronizada por problema.
-- **`neetcode-gh/leetcode`**: Convenções rigorosas de nomenclatura de 4 dígitos (`0001-...`), código semântico e diretrizes estritas de contribuição (`CONTRIBUTING.md`).
-- **`seanprashad/leetcode-patterns`**: Categorização por padrões algorítmicos e conceituais (Select, Joins, Aggregation, Window Functions, Subqueries).
-- **`GioiaZheng/LeetCode-Solutions`**: Catálogo estruturado em metadados (`metadata/solutions.json`), validação contínua e geração automatizada de documentação.
+- **Interface de Descoberta Web (GitHub Pages)**: Portal estático independente com pesquisa em tempo real por padrões relacionais, dificuldade e identificadores.
+- **Indexação Técnica & SEO**: Cada problema possui sua própria página estática indexável (`docs/solutions/`), equipada com metadados estruturados Schema.org / JSON-LD, sitemap XML e permissões explícitas para crawlers de busca e agentes de IA (`OAI-SearchBot`, Googlebot, Bingbot).
+- **Padronização e Rastreabilidade**: Convenção de 4 dígitos (`0000-slug`), separação dos códigos-fonte e fichas técnicas individuais com análise assintótica de tempo e espaço ($O$).
+- **Catálogo Estruturado em Metadados**: Base única em [`metadata/solutions.json`](./metadata/solutions.json) utilizada para alimentar documentação, scripts e a interface web.
 
 ---
 
@@ -31,29 +32,31 @@ O projeto incorpora os padrões de referência dos maiores acervos de programaç
 
 ```text
 Leetcode-Solutions/
-├── .github/
-│   └── workflows/
-│       └── validate-and-sync.yml   # Pipeline CI: validação de conformidade e auto-indexação
+├── docs/                           # Portal Web estático (GitHub Pages)
+│   ├── index.html                  # Interface de exploração e busca por filtros
+│   ├── solutions/                  # Páginas estáticas individuais de cada exercício
+│   ├── sitemap.xml                 # Mapeamento para motores de busca
+│   └── robots.txt                  # Diretrizes para indexadores e agentes de IA
 ├── metadata/
-│   └── solutions.json              # Catálogo unificado com metadados, links e complexidade
+│   └── solutions.json              # Catálogo centralizado em formato JSON
 ├── scripts/
-│   ├── build_metadata.py           # Parser e migrador de submissões para a estrutura formal
-│   ├── generate_readme.py          # Gerador automático dos índices e métricas do repositório
+│   ├── generate_site.py            # Compilador do portal web estático
+│   ├── generate_readme.py          # Gerador automático dos índices e métricas
 │   ├── validate.py                 # Validador de integridade, nomenclatura e links
-│   └── sync.py                     # CLI para ingestão automatizada de novas resoluções
+│   └── sync.py                     # Sincronizador e ingestor de novas submissões
 ├── LeetCode/
-│   ├── README.md                   # Portal e métricas específicas da plataforma LeetCode
+│   ├── README.md                   # Portal específico da plataforma LeetCode
 │   ├── SQL/                        # Acervo SQL segregado por dificuldade
-│   │   ├── Easy/                   # 32 soluções catalogadas com código e documentação
+│   │   ├── Easy/                   # 32 soluções catalogadas
 │   │   ├── Medium/                 # 16 soluções catalogadas
 │   │   └── Hard/                   # 1 solução catalogada
 │   ├── Python/                     # Diretório preparado para algoritmos e estruturas de dados
 │   └── Java/                       # Diretório preparado para soluções em Java
 ├── HackerRank/                     # Suporte multi-plataforma (Python & SQL)
 ├── Codeforces/                     # Suporte multi-plataforma (C++)
-├── CONTRIBUTING.md                 # Guia formal de padronização e fluxo de contribuição
+├── CONTRIBUTING.md                 # Guia de padronização e fluxo de contribuição
 ├── LICENSE                         # Licença MIT
-└── README.md                       # Índice mestre e dashboard interativo
+└── README.md                       # Índice principal e dashboard
 ```
 
 ---
@@ -84,16 +87,16 @@ O plano de estudos **LeetCode SQL 50** está **concluído**, cobrindo todas as c
 | 🟢 **Dificuldade Fácil (Easy)** | `32` | `65.3%` |
 | 🟡 **Dificuldade Média (Medium)** | `16` | `32.7%` |
 | 🔴 **Dificuldade Difícil (Hard)** | `1` | `2.0%` |
-| 🗄️ **Linguagem Principal Atual** | `MySQL 8.0` | `100%` |
-| 🏆 **Régua de Qualidade do Benchmarking** | **100 / 100** | **Excelente** |
+| 🗄️ **Dialeto Relacional** | `MySQL 8.0` | `100%` |
+| 🌐 **Páginas Estáticas Indexáveis** | `49` | `100%` |
 
 </div>
 
 ---
 
-## 📑 Catálogo Completo de Soluções
+## 📑 Catálogo de Soluções
 
-A tabela abaixo é sincronizada automaticamente a partir do catálogo estruturado [`metadata/solutions.json`](./metadata/solutions.json). Cada solução possui seu próprio arquivo `.sql` e uma ficha técnica individual `README.md` com abordagem e análise assintótica.
+A tabela abaixo reflete as soluções catalogadas em [`metadata/solutions.json`](./metadata/solutions.json). Cada solução possui seu próprio arquivo `.sql` e uma ficha técnica individual `README.md` com abordagem e análise assintótica.
 
 | ID | Desafio | Dificuldade | Categoria | Tempo | Espaço | Código | Documentação |
 | :-: | :--- | :-: | :--- | :-: | :-: | :-: | :-: |
@@ -149,30 +152,21 @@ A tabela abaixo é sincronizada automaticamente a partir do catálogo estruturad
 
 ---
 
-## ⚙️ Automação e Ciclo de Vida (CI/CD)
+## ⚙️ Manutenção e Scripts Utilitários
 
-O repositório possui uma suíte completa de automações em Python:
-
-1. **Validação de Qualidade (`scripts/validate.py`)**:
-   - Assegura nomenclatura estrita de 4 dígitos (`0001-...`).
-   - Garante a presença do arquivo de código e do `README.md` individual para cada exercício.
-   - Verifica se todas as seções obrigatórias (`Problem Statement`, `Approach`, `Complexity Analysis`, `Solution Reference`) estão presentes.
-   - Audita a integridade de todos os links relativos.
-
-2. **Geração Dinâmica de Índices (`scripts/generate_readme.py`)**:
-   - Recalcula métricas, barras de progresso e gera o `README.md` principal e os portais de cada plataforma.
-
-3. **Ingestão Automatizada (`scripts/sync.py`)**:
-   - Ingestão contínua para submissões automáticas (ex: via extensões de sincronização como LeetHub). As pastas depositadas na raiz são automaticamente convertidas, padronizadas e realocadas na pasta de dificuldade correta.
+O repositório conta com scripts em Python para manutenção contínua:
 
 ```bash
-# Executar validação de conformidade
+# Validar conformidade estrutural, links e metadados
 python scripts/validate.py
 
-# Regenerar documentação e índices
+# Regenerar documentação Markdown do README
 python scripts/generate_readme.py
 
-# Sincronizar nova submissão
+# Recompilar portal estático (HTML, sitemap e robots)
+python scripts/generate_site.py
+
+# Ingerir novas submissões
 python scripts/sync.py
 ```
 
@@ -180,14 +174,14 @@ python scripts/sync.py
 
 ## 🧪 Como Executar as Consultas Localmente
 
-Todas as soluções SQL utilizam dialeto **MySQL 8.0+** e funções compatíveis com padrões ANSI SQL.
+Todas as soluções utilizam **MySQL 8.0+** e são compatíveis com padrões ANSI SQL.
 
-### Via Docker:
+### Exemplo com Docker:
 ```bash
 # Iniciar instância do MySQL
 docker run --name leetcode-mysql -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_DATABASE=leetcode -p 3306:3306 -d mysql:8.0
 
-# Conectar e executar uma consulta
+# Executar uma consulta
 docker exec -i leetcode-mysql mysql -uroot -psecret leetcode < LeetCode/SQL/Easy/0584-find-customer-referee/0584-find-customer-referee.sql
 ```
 
@@ -195,7 +189,7 @@ docker exec -i leetcode-mysql mysql -uroot -psecret leetcode < LeetCode/SQL/Easy
 
 ## 🏷️ GitHub Topics & Descoberta
 
-Para máxima visibilidade técnica no GitHub, configure os seguintes **Topics** nas configurações do repositório:
+Topics configurados para o repositório:
 ```text
 leetcode, leetcode-solutions, sql, mysql, database, algorithms, data-structures, competitive-programming, interview-preparation, problem-solving, coding-challenges, sql50
 ```
@@ -204,7 +198,7 @@ leetcode, leetcode-solutions, sql, mysql, database, algorithms, data-structures,
 
 ## 🤝 Diretrizes de Contribuição
 
-Contribuições, correções ou implementações em novas linguagens (Python, C++, Java) são bem-vindas. Consulte as diretrizes detalhadas no arquivo [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+Consulte [`CONTRIBUTING.md`](./CONTRIBUTING.md) para regras de nomenclatura, formatação de soluções e checklist para envio de pull requests.
 
 ---
 

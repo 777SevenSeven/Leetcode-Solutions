@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeetCode #0626 - Exchange Seats | SQL Solution &amp; Analysis</title>
+  <meta name="description" content="Detailed SQL query explanation and asymptotic complexity analysis for LeetCode #0626: Exchange Seats (Medium).">
+  <link rel="canonical" href="https://777sevenseven.github.io/Leetcode-Solutions/solutions/0626-exchange-seats.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="LeetCode #0626 - Exchange Seats (Medium)">
+  <meta property="og:description" content="Technical approach, time and space complexity, and verified SQL solution.">
+  <meta property="og:url" content="https://777sevenseven.github.io/Leetcode-Solutions/solutions/0626-exchange-seats.html">
+  <meta property="og:type" content="article">
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "LeetCode #626 - Exchange Seats (Medium) Solution & Explanation",
+  "description": "Optimized SQL solution and technical explanation for LeetCode problem 0626: Exchange Seats. Includes asymptotic complexity analysis and clean query design.",
+  "articleSection": "Subqueries",
+  "keywords": "LeetCode, SQL, MySQL, Subqueries, Exchange Seats, Database, Algorithm",
+  "author": {
+    "@type": "Person",
+    "name": "777SevenSeven"
+  },
+  "url": "https://777sevenseven.github.io/Leetcode-Solutions/solutions/0626-exchange-seats.html"
+}
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --code-bg: #090d16;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    .nav-back { margin-bottom: 1.5rem; }
+    .nav-back a { color: var(--primary); text-decoration: none; font-size: 0.95rem; }
+    .nav-back a:hover { text-decoration: underline; }
+    .header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .header h1 { font-size: 1.85rem; margin-bottom: 0.75rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge-diff { background: rgba(255,255,255,0.08); color: #ffc01e; border: 1px solid #ffc01e; }
+    .badge-cat { background: rgba(56, 189, 248, 0.1); color: var(--primary); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .section h2 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    .metrics-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    .metrics-table th, .metrics-table td { text-align: left; padding: 0.6rem 0.8rem; border: 1px solid var(--border); font-size: 0.95rem; }
+    .metrics-table th { background: rgba(255,255,255,0.03); }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-right: 0.75rem;
+    }
+    .btn:hover { background: #1d4ed8; }
+    .btn-secondary { background: #334155; }
+    .btn-secondary:hover { background: #475569; }
+    .footer { text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-back">
+      <a href="../index.html">&larr; Back to Problem Catalog</a>
+    </div>
+
+    <div class="header">
+      <h1>#0626 - Exchange Seats</h1>
+      <div class="tags">
+        <span class="badge badge-diff">Medium</span>
+        <span class="badge badge-cat">Subqueries</span>
+        <span class="badge" style="background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid #22c55e;">Status: Accepted</span>
+      </div>
+      <div style="margin-top: 1.25rem;">
+        <a href="https://leetcode.com/problems/exchange-seats" target="_blank" rel="noopener noreferrer" class="btn">View on LeetCode &nearr;</a>
+        <a href="https://github.com/777SevenSeven/Leetcode-Solutions/blob/main/LeetCode/SQL/Medium/0626-exchange-seats/0626-exchange-seats.sql" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View Code on GitHub &nearr;</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Problem Statement</h2>
+      <div style="font-size: 0.95rem; color: #cbd5e1;">
+        Table: <code>Seat</code><br><br><pre><code>+-------------+---------+<br>| Column Name | Type    |<br>+-------------+---------+<br>| id          | int     |<br>| student     | varchar |<br>+-------------+---------+<br>id is the primary key (unique value) column for this table.<br>Each row of this table indicates the name and the ID of a student.<br>The ID sequence always starts from 1 and increments continuously.</code></pre><br><br>Write a solution to swap the seat id of every two consecutive students. If the number of students is odd, the id of the last student is not swapped.<br><br>Return the result table ordered by <code>id</code> **in ascending order**.<br><br>The result format is in the following example.<br><br>Example 1:<br><br><pre><code>Input: <br>Seat table:<br>+----+---------+<br>| id | student |<br>+----+---------+<br>| 1  | Abbot   |<br>| 2  | Doris   |<br>| 3  | Emerson |<br>| 4  | Green   |<br>| 5  | Jeames  |<br>+----+---------+<br>Output: <br>+----+---------+<br>| id | student |<br>+----+---------+<br>| 1  | Doris   |<br>| 2  | Abbot   |<br>| 3  | Green   |<br>| 4  | Emerson |<br>| 5  | Jeames  |<br>+----+---------+<br>Explanation: <br>Note that if the number of students is odd, there is no need to change the last one&amp;#39;s seat.</code></pre>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Approach &amp; Key Insights</h2>
+      <p style="font-size: 0.95rem; color: #cbd5e1;">Swap adjacent seat IDs using conditional `CASE WHEN` logic: odd IDs increase by 1 (except the final seat if total count is odd), while even IDs decrease by 1.</p>
+    </div>
+
+    <div class="section">
+      <h2>Complexity Analysis</h2>
+      <table class="metrics-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Complexity</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Time Complexity</strong></td>
+            <td><code>O(N)</code></td>
+            <td>Execution runtime</td>
+          </tr>
+          <tr>
+            <td><strong>Space Complexity</strong></td>
+            <td><code>O(1)</code></td>
+            <td>Memory / Temporary buffer</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Verified SQL Solution</h2>
+      <pre><code># Write your MySQL query statement below
+SELECT
+    CASE
+        WHEN id % 2 = 1 AND id &lt;&gt; (SELECT MAX(id) FROM Seat)
+            THEN id + 1
+        WHEN id % 2 = 1
+            THEN id
+        ELSE id - 1
+    END AS id,
+    student
+FROM Seat
+ORDER BY id;</code></pre>
+    </div>
+
+    <div class="footer">
+      <p>LeetCode Solutions &amp; Competitive Programming Hub &bull; Maintained by 777SevenSeven</p>
+    </div>
+  </div>
+</body>
+</html>

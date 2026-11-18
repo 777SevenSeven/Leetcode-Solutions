@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeetCode #1661 - Average Time of Process per Machine | SQL Solution &amp; Analysis</title>
+  <meta name="description" content="Detailed SQL query explanation and asymptotic complexity analysis for LeetCode #1661: Average Time of Process per Machine (Easy).">
+  <link rel="canonical" href="https://777sevenseven.github.io/Leetcode-Solutions/solutions/1661-average-time-of-process-per-machine.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="LeetCode #1661 - Average Time of Process per Machine (Easy)">
+  <meta property="og:description" content="Technical approach, time and space complexity, and verified SQL solution.">
+  <meta property="og:url" content="https://777sevenseven.github.io/Leetcode-Solutions/solutions/1661-average-time-of-process-per-machine.html">
+  <meta property="og:type" content="article">
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "LeetCode #1661 - Average Time of Process per Machine (Easy) Solution & Explanation",
+  "description": "Optimized SQL solution and technical explanation for LeetCode problem 1661: Average Time of Process per Machine. Includes asymptotic complexity analysis and clean query design.",
+  "articleSection": "Basic Joins",
+  "keywords": "LeetCode, SQL, MySQL, Basic Joins, Average Time of Process per Machine, Database, Algorithm",
+  "author": {
+    "@type": "Person",
+    "name": "777SevenSeven"
+  },
+  "url": "https://777sevenseven.github.io/Leetcode-Solutions/solutions/1661-average-time-of-process-per-machine.html"
+}
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --code-bg: #090d16;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 860px; margin: 0 auto; }
+    .nav-back { margin-bottom: 1.5rem; }
+    .nav-back a { color: var(--primary); text-decoration: none; font-size: 0.95rem; }
+    .nav-back a:hover { text-decoration: underline; }
+    .header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+    }
+    .header h1 { font-size: 1.85rem; margin-bottom: 0.75rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge-diff { background: rgba(255,255,255,0.08); color: #00b8a3; border: 1px solid #00b8a3; }
+    .badge-cat { background: rgba(56, 189, 248, 0.1); color: var(--primary); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .section h2 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+    .metrics-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    .metrics-table th, .metrics-table td { text-align: left; padding: 0.6rem 0.8rem; border: 1px solid var(--border); font-size: 0.95rem; }
+    .metrics-table th { background: rgba(255,255,255,0.03); }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #2563eb;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-right: 0.75rem;
+    }
+    .btn:hover { background: #1d4ed8; }
+    .btn-secondary { background: #334155; }
+    .btn-secondary:hover { background: #475569; }
+    .footer { text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="nav-back">
+      <a href="../index.html">&larr; Back to Problem Catalog</a>
+    </div>
+
+    <div class="header">
+      <h1>#1661 - Average Time of Process per Machine</h1>
+      <div class="tags">
+        <span class="badge badge-diff">Easy</span>
+        <span class="badge badge-cat">Basic Joins</span>
+        <span class="badge" style="background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid #22c55e;">Status: Accepted</span>
+      </div>
+      <div style="margin-top: 1.25rem;">
+        <a href="https://leetcode.com/problems/average-time-of-process-per-machine" target="_blank" rel="noopener noreferrer" class="btn">View on LeetCode &nearr;</a>
+        <a href="https://github.com/777SevenSeven/Leetcode-Solutions/blob/main/LeetCode/SQL/Easy/1661-average-time-of-process-per-machine/1661-average-time-of-process-per-machine.sql" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">View Code on GitHub &nearr;</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Problem Statement</h2>
+      <div style="font-size: 0.95rem; color: #cbd5e1;">
+        Table: <code>Activity</code><br><br><pre><code>+----------------+---------+<br>| Column Name    | Type    |<br>+----------------+---------+<br>| machine_id     | int     |<br>| process_id     | int     |<br>| activity_type  | enum    |<br>| timestamp      | float   |<br>+----------------+---------+<br>The table shows the user activities for a factory website.<br>(machine_id, process_id, activity_type) is the primary key (combination of columns with unique values) of this table.<br>machine_id is the ID of a machine.<br>process_id is the ID of a process running on the machine with ID machine_id.<br>activity_type is an ENUM (category) of type (&amp;#39;start&amp;#39;, &amp;#39;end&amp;#39;).<br>timestamp is a float representing the current time in seconds.<br>&amp;#39;start&amp;#39; means the machine starts the process at the given timestamp and &amp;#39;end&amp;#39; means the machine ends the process at the given timestamp.<br>The <code>start</code> timestamp will always be less than or equal to the <code>end</code> timestamp for every <code>(machine_id, process_id)</code> pair.<br>It is guaranteed that each (machine_id, process_id) pair has a &amp;#39;start&amp;#39; and &amp;#39;end&amp;#39; timestamp.</code></pre><br><br>There is a factory website that has several machines, each running one or more processes. Write a solution to find the **average time** each machine takes to complete a process.<br><br>The time to complete a process is the <code>&amp;#39;end&amp;#39; timestamp</code> minus the <code>&amp;#39;start&amp;#39; timestamp</code>. The average time is calculated by the total time to complete every process on the machine divided by the number of processes that were run on that machine.<br><br>The resulting table should have the <code>machine_id</code> along with the **average time** as <code>processing_time</code>, which should be **rounded to 3 decimal places**.<br><br>Return the result table in **any order**.<br><br>The result format is in the following example.<br><br>Example 1:<br><br><pre><code>Input: <br>Activity table:<br>+------------+------------+---------------+-----------+<br>| machine_id | process_id | activity_type | timestamp |<br>+------------+------------+---------------+-----------+<br>| 0          | 0          | start         | 0.712     |<br>| 0          | 0          | end           | 1.520     |<br>| 0          | 1          | start         | 3.140     |<br>| 0          | 1          | end           | 4.120     |<br>| 1          | 0          | start         | 0.550     |<br>| 1          | 0          | end           | 1.550     |<br>| 1          | 1          | start         | 0.430     |<br>| 1          | 1          | end           | 1.420     |<br>| 2          | 0          | start         | 4.100     |<br>| 2          | 0          | end           | 4.512     |<br>| 2          | 1          | start         | 2.500     |<br>| 2          | 1          | end           | 5.000     |<br>+------------+------------+---------------+-----------+<br>Output: <br>+------------+-----------------+<br>| machine_id | processing_time |<br>+------------+-----------------+<br>| 0          | 0.894           |<br>| 1          | 0.995           |<br>| 2          | 1.456           |<br>+------------+-----------------+<br>Explanation: <br>There are 3 machines running 2 processes each.<br>Machine 0&amp;#39;s average time is ((1.520 - 0.712) + (4.120 - 3.140)) / 2 = 0.894<br>Machine 1&amp;#39;s average time is ((1.550 - 0.550) + (1.420 - 0.430)) / 2 = 0.995<br>Machine 2&amp;#39;s average time is ((4.512 - 4.100) + (5.000 - 2.500)) / 2 = 1.456</code></pre>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Approach &amp; Key Insights</h2>
+      <p style="font-size: 0.95rem; color: #cbd5e1;">Self-join the table matching identical `machine_id` and `process_id` between start and end events, computing average processing time with `ROUND(AVG(a2.timestamp - a1.timestamp), 3)`.</p>
+    </div>
+
+    <div class="section">
+      <h2>Complexity Analysis</h2>
+      <table class="metrics-table">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Complexity</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Time Complexity</strong></td>
+            <td><code>O(N)</code></td>
+            <td>Execution runtime</td>
+          </tr>
+          <tr>
+            <td><strong>Space Complexity</strong></td>
+            <td><code>O(N)</code></td>
+            <td>Memory / Temporary buffer</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>Verified SQL Solution</h2>
+      <pre><code>SELECT
+    a.machine_id,
+    ROUND(AVG(b.timestamp - a.timestamp), 3) AS processing_time
+FROM Activity a
+JOIN Activity b
+    ON a.machine_id = b.machine_id
+    AND a.process_id = b.process_id
+WHERE a.activity_type = &#x27;start&#x27;
+  AND b.activity_type = &#x27;end&#x27;
+GROUP BY a.machine_id;</code></pre>
+    </div>
+
+    <div class="footer">
+      <p>LeetCode Solutions &amp; Competitive Programming Hub &bull; Maintained by 777SevenSeven</p>
+    </div>
+  </div>
+</body>
+</html>

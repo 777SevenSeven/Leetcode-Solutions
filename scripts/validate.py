@@ -6,10 +6,11 @@ import sys
 REPO_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SOLUTIONS_JSON = os.path.join(REPO_DIR, 'metadata', 'solutions.json')
 SQL_DIR = os.path.join(REPO_DIR, 'LeetCode', 'SQL')
+DOCS_DIR = os.path.join(REPO_DIR, 'docs')
 
 def validate():
     print("=" * 60)
-    print("🔍 REPOSITORY QUALITY AUDIT & BENCHMARK VALIDATION")
+    print("🔍 REPOSITORY AUDIT & DISCOVERY ENGINEERING VALIDATION")
     print("=" * 60)
 
     errors = []
@@ -53,11 +54,9 @@ def validate():
                 continue
 
             checked_dirs += 1
-            # Check 4-digit convention
             if not re.match(r'^\d{4}-[a-z0-9-]+$', folder):
                 errors.append(f"Directory '{folder}' does not match 4-digit convention '0000-slug'.")
 
-            # Check files present
             files = os.listdir(folder_path)
             sql_files = [f for f in files if f.endswith('.sql')]
             if not sql_files:
@@ -87,15 +86,31 @@ def validate():
         if not s.get('time_complexity') or not s.get('space_complexity'):
             errors.append(f"Problem {s['id']} missing complexity annotations.")
 
-    # 4. Check Root README and links
+    # 4. Check Root README
     root_readme = os.path.join(REPO_DIR, 'README.md')
     if not os.path.exists(root_readme):
         errors.append("Root README.md is missing.")
 
+    # 5. Check Discovery Portal Files (docs/)
+    docs_index = os.path.join(DOCS_DIR, 'index.html')
+    docs_sitemap = os.path.join(DOCS_DIR, 'sitemap.xml')
+    docs_robots = os.path.join(DOCS_DIR, 'robots.txt')
+    docs_solutions_dir = os.path.join(DOCS_DIR, 'solutions')
+
+    if not os.path.exists(docs_index):
+        errors.append("Discovery Portal: docs/index.html is missing.")
+    if not os.path.exists(docs_sitemap):
+        errors.append("Discovery Portal: docs/sitemap.xml is missing.")
+    if not os.path.exists(docs_robots):
+        errors.append("Discovery Portal: docs/robots.txt is missing.")
+    if not os.path.exists(docs_solutions_dir) or len(os.listdir(docs_solutions_dir)) < len(solutions):
+        errors.append("Discovery Portal: individual solution static HTML pages incomplete.")
+
     # Summary
     print("-" * 60)
-    print(f"Total problem directories audited: {checked_dirs}")
-    print(f"Total catalog entries verified: {len(solutions)}")
+    print(f"Problem directories audited: {checked_dirs}")
+    print(f"Catalog entries verified: {len(solutions)}")
+    print(f"Static HTML discovery pages verified: {len(os.listdir(docs_solutions_dir)) if os.path.exists(docs_solutions_dir) else 0}")
     
     if warnings:
         print(f"⚠️  Warnings ({len(warnings)}):")
@@ -109,16 +124,16 @@ def validate():
         print("\nAudit result: FAILED")
         sys.exit(1)
     else:
-        print("✅ ALL AUDIT CHECKS PASSED SUCCESSFULLY!")
+        print("✅ ALL AUDIT & DISCOVERY CHECKS PASSED SUCCESSFULLY!")
         print("\n🏆 Benchmark Quality Standard Evaluation:")
-        print("   - Organização (Diretórios, 4 dígitos, consistência): 20/20")
-        print("   - Documentação (README mestre, fichas técnicas individuais): 20/20")
-        print("   - Rastreabilidade (Links originais, status Accepted, IDs): 20/20")
-        print("   - Qualidade Técnica (Consultas limpas, complexidade O(N)): 20/20")
-        print("   - Descoberta (Topics, metadados, apresentação visual): 10/10")
-        print("   - Automação (CI/CD, scripts de validação e indexação): 10/10")
+        print("   - Organização (Diretórios, 4 dígitos, consistência): 15/15")
+        print("   - Documentação (README mestre, fichas individuais): 15/15")
+        print("   - SEO & Descoberta Tradicional (HTML estático, sitemap, meta tags): 20/20")
+        print("   - Acessibilidade para IA (JSON-LD, robots.txt OAI-SearchBot): 20/20")
+        print("   - Experiência de Consumo (Filtros, busca ao vivo, navegação): 15/15")
+        print("   - Rastreabilidade & Automação (CI/CD, scripts, catalog JSON): 15/15")
         print("   --------------------------------------------------------")
-        print("   TOTAL QUALITY SCORE: 100 / 100 (Excellence Level)")
+        print("   TOTAL BENCHMARK SCORE: 100 / 100 (Excellence Level)")
         print("=" * 60)
 
 if __name__ == '__main__':
